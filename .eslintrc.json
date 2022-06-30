@@ -37,7 +37,17 @@
             "error",
             "always"
         ],
-        "react/react-in-jsx-scope": "off",  
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".tsx", ".ts", ".tsx"] }]
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".js",
+                    ".tsx",
+                    ".ts",
+                    ".tsx"
+                ]
+            }
+        ]
     }
 }
