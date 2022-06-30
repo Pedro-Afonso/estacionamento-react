@@ -1,3 +1,5 @@
+import { LayoutBaseDaPagina } from "../shared/layout";
+
 export const Dashboard = () => {
-  return <p>Dashboard</p>;
+  return <LayoutBaseDaPagina></LayoutBaseDaPagina>;
 };
