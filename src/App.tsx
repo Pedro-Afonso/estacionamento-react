@@ -7,15 +7,13 @@ import { MenuLateral } from "./shared/components";
 export const App = () => {
   return (
     <AppThemeProvider>
-      <BrowserRouter>
-        <AppThemeProvider>
-          <AppDrawerProvider>
-            <MenuLateral>
-              <AppRoutes />
-            </MenuLateral>
-          </AppDrawerProvider>
-        </AppThemeProvider>
-      </BrowserRouter>
+      <AppDrawerProvider>
+        <BrowserRouter>
+          <MenuLateral>
+            <AppRoutes />
+          </MenuLateral>
+        </BrowserRouter>
+      </AppDrawerProvider>
     </AppThemeProvider>
   );
 };
