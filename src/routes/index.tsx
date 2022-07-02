@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
-import { Dashboard } from "../pages";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { Dashboard, ListagemDeVeiculos } from "../pages";
 import { useDrawerContext } from "../shared/contexts";
 
 export const AppRoutes = () => {
@@ -13,12 +13,19 @@ export const AppRoutes = () => {
         icon: "home",
         path: "/pagina-inicial",
       },
+      {
+        label: "Veículos",
+        icon: "directions_car_icon",
+        path: "/veiculos",
+      },
     ]);
   }, [setDrawerOptions]);
 
   return (
     <Routes>
       <Route path="/pagina-inicial" element={<Dashboard />} />
+      <Route path="/veiculos" element={<ListagemDeVeiculos />} />
+      <Route path="*" element={<Navigate to="/pagina-inicial" />} />
     </Routes>
   );
 };
