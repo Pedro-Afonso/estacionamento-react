@@ -1,5 +1,5 @@
-import { FerramentasDaListagem } from "../shared/components";
-import { LayoutBaseDaPagina } from "../shared/layout";
+import { FerramentasDaListagem } from "../../shared/components";
+import { LayoutBaseDaPagina } from "../../shared/layout";
 
 export const Dashboard = () => {
   return (

@@ -15,13 +15,13 @@ import {
   TableRow,
 } from "@mui/material";
 
-import { Environment } from "../shared/environment";
+import { Environment } from "../../shared/environment";
 import {
   VeiculosService,
   IListagemVeiculo,
-} from "../shared/services/api/veiculos/VeiculosService";
-import { FerramentasDaListagem } from "../shared/components";
-import { LayoutBaseDaPagina } from "../shared/layout";
+} from "../../shared/services/api/veiculos/VeiculosService";
+import { FerramentasDaListagem } from "../../shared/components";
+import { LayoutBaseDaPagina } from "../../shared/layout";
 
 export const ListagemDeVeiculos = () => {
   const [searchParams, setSearchParams] = useSearchParams();
