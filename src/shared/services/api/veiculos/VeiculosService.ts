@@ -1,4 +1,5 @@
 import { Api } from "../axios-config";
+import { Environment } from "../../../environment";
 
 export interface IListagemVeiculo {
   id: number;
@@ -21,16 +22,14 @@ type TVeiculosComTotalCount = {
 
 const getAll = async (page = 1): Promise<TVeiculosComTotalCount | Error> => {
   try {
-    const urlRelativa = `/veiculos?_page=${page}&_limit=${process.env.REACT_APP_LIMITE_DE_LINHAS}`;
+    const urlRelativa = `/veiculos?_page=${page}&_limit=${Environment.LIMITE_DE_LINHAS}`;
 
     const { data, headers } = await Api.get(urlRelativa);
 
     if (data) {
       return {
         data,
-        totalCount: Number(
-          headers["x-total-count"] || process.env.REACT_APP_LIMITE_DE_LINHAS
-        ),
+        totalCount: Number(headers["x-total-count"] || Environment.LIMITE_DE_LINHAS),
       };
     }
 
