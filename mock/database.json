@@ -1,0 +1,9 @@
+{
+    "veiculos":[
+        {
+            "id": 1,
+            "placa": "ABC12345",
+            "entrada": "10:00"
+        }
+    ]
+}

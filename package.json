@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "cross-env BROWSER=none react-scripts start",
+    "mock": "json-server -w -p 5000 ./mock/database.json",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
