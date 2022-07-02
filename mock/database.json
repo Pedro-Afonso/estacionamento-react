@@ -1,64 +1,58 @@
 {
-    "veiculos":[
-        {
-            "id": 1,
-            "usuario": "Afonso",
-            "placa": "ABC12345",
-            "entrada": "10:00"
-        },
-        {
-            "id": 2,
-            "usuario": "Maria",
-            "placa": "ABC12345",
-            "entrada": "10:00"
-        },
-        {
-            "id": 3,
-            "usuario": "João",
-            "placa": "ABC12345",
-            "entrada": "10:00"
-        },
-        {
-            "id": 4,
-            "usuario": "José",
-            "placa": "ABC12345",
-            "entrada": "10:00"
-        },
-        {
-            "id": 5,
-            "usuario": "Roberto",
-            "placa": "ABC12345",
-            "entrada": "10:00"
-        },
-        {
-            "id": 6,
-            "usuario": "Antônio",
-            "placa": "ABC12345",
-            "entrada": "10:00"
-        },
-        {
-            "id": 7,
-            "usuario": "Roberto",
-            "placa": "ABC12345",
-            "entrada": "10:00"
-        },
-        {
-            "id": 8,
-            "usuario": "Pedro",
-            "placa": "ABC12345",
-            "entrada": "10:00"
-        },
-        {
-            "id": 9,
-            "usuario": "Gerivaldo",
-            "placa": "ABC12345",
-            "entrada": "10:00"
-        },
-        {
-            "id": 10,
-            "usuario": "Roberto",
-            "placa": "ABC12345",
-            "entrada": "10:00"
-        }
-    ]
+  "veiculos": [
+    {
+      "id": 1,
+      "usuario": "Afonso",
+      "placa": "ABC12345",
+      "entrada": "10:00"
+    },
+    {
+      "id": 2,
+      "usuario": "Maria",
+      "placa": "ABC12345",
+      "entrada": "10:00"
+    },
+    {
+      "id": 4,
+      "usuario": "José",
+      "placa": "ABC12345",
+      "entrada": "10:00"
+    },
+    {
+      "id": 5,
+      "usuario": "Roberto",
+      "placa": "ABC12345",
+      "entrada": "10:00"
+    },
+    {
+      "id": 6,
+      "usuario": "Antônio",
+      "placa": "ABC12345",
+      "entrada": "10:00"
+    },
+    {
+      "id": 7,
+      "usuario": "Roberto",
+      "placa": "ABC12345",
+      "entrada": "10:00"
+    },
+    {
+      "id": 8,
+      "usuario": "Pedro",
+      "placa": "ABC12345",
+      "entrada": "10:00"
+    },
+    {
+      "id": 9,
+      "usuario": "Gerivaldo",
+      "placa": "ABC12345",
+      "entrada": "10:00"
+    },
+    {
+      "id": 10,
+      "usuario": "Roberto",
+      "placa": "ABC12345",
+      "entrada": "10:00"
+    }
+  ]
 }
