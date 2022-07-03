@@ -5,14 +5,14 @@ export interface IListagemVeiculo {
   id: number;
   usuario: string;
   placa: string;
-  entrada: number;
+  entrada?: string;
 }
 
 interface IDetalhesVeiculo {
   id: number;
   usuario: string;
   placa: string;
-  entrada: number;
+  entrada?: string;
 }
 
 type TVeiculosComTotalCount = {
@@ -73,9 +73,12 @@ const create = async (dados: Omit<IDetalhesVeiculo, "id">): Promise<number | Err
     );
   }
 };
-const updateById = async (id: number, dados: IDetalhesVeiculo): Promise<void | Error> => {
+const updateById = async (
+  id: number,
+  dados: Omit<IDetalhesVeiculo, "id" | "entrada">
+): Promise<void | Error> => {
   try {
-    await Api.put(`/veiculos/${id}`, dados);
+    await Api.patch(`/veiculos/${id}`, dados);
   } catch (error) {
     console.log(error);
     return new Error(
