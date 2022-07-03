@@ -2,14 +2,26 @@ import { Box, Button, Icon, Paper, useTheme } from "@mui/material";
 
 interface IFerramentasDaListagemProps {
   mostrarBotaoNovo?: boolean;
+  mostrarBotaoSalvar?: boolean;
+  mostrarBotaoVoltar?: boolean;
   textoBotaoNovo?: string;
+  textoBotaoSalvar?: string;
+  textoBotaoVoltar?: string;
   aoClicarEmNovo?: () => void;
+  aoClicarEmSalvar?: () => void;
+  aoClicarEmVoltar?: () => void;
 }
 
 export const FerramentasDaListagem: React.FC<IFerramentasDaListagemProps> = ({
-  mostrarBotaoNovo = true,
+  mostrarBotaoNovo = false,
+  mostrarBotaoSalvar = false,
+  mostrarBotaoVoltar = false,
   textoBotaoNovo = "Novo",
+  textoBotaoSalvar = "Salvar",
+  textoBotaoVoltar = "Voltar",
   aoClicarEmNovo,
+  aoClicarEmSalvar,
+  aoClicarEmVoltar,
 }) => {
   const theme = useTheme();
 
@@ -24,6 +36,31 @@ export const FerramentasDaListagem: React.FC<IFerramentasDaListagemProps> = ({
       height={theme.spacing(5)}
       component={Paper}
     >
+      <Box flex={1} display="flex" justifyContent="start" gap={1}>
+        {mostrarBotaoSalvar && (
+          <Button
+            color="primary"
+            disableElevation
+            variant="contained"
+            onClick={aoClicarEmSalvar}
+            startIcon={<Icon>save</Icon>}
+          >
+            {textoBotaoSalvar}
+          </Button>
+        )}
+        {mostrarBotaoVoltar && (
+          <Button
+            color="primary"
+            disableElevation
+            variant="contained"
+            onClick={aoClicarEmVoltar}
+            startIcon={<Icon>arrow_back</Icon>}
+          >
+            {textoBotaoVoltar}
+          </Button>
+        )}
+      </Box>
+
       <Box flex={1} display="flex" justifyContent="end">
         {mostrarBotaoNovo && (
           <Button
