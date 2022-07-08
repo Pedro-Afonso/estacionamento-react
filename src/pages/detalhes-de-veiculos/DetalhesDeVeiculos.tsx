@@ -1,14 +1,19 @@
-import { TextField, Box, Paper, Grid } from "@mui/material";
+import { TextField, Box, Paper, Grid, LinearProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
-import { FerramentasDaListagem } from "../../shared/components";
+import { FerramentasDeDetalhe } from "../../shared/components";
 import { LayoutBaseDaPagina } from "../../shared/layout";
 import { VeiculosService } from "../../shared/services/api/veiculos/VeiculosService";
 
 export const DetalhesDeVeiculos: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const { handleSubmit, control, setValue } = useForm<FormValues>();
+  const {
+    handleSubmit,
+    control,
+    setValue,
+    formState: { errors },
+  } = useForm<FormValues>();
   const navigate = useNavigate();
 
   const { id = "nova" } = useParams<"id">();
@@ -60,6 +65,7 @@ export const DetalhesDeVeiculos: React.FC = () => {
         }
       });
     } else {
+      setIsLoading(false);
       setValue("usuario", "");
       setValue("placa", "");
     }
@@ -69,7 +75,7 @@ export const DetalhesDeVeiculos: React.FC = () => {
     <LayoutBaseDaPagina
       titulo={id === "novo" ? "Adicionar novo veículo" : "Detalhes do veículo"}
       barraDeFerramentas={
-        <FerramentasDaListagem
+        <FerramentasDeDetalhe
           mostrarBotaoSalvar
           mostrarBotaoVoltar
           mostrarBotaoNovo={id !== "novo"}
@@ -82,17 +88,26 @@ export const DetalhesDeVeiculos: React.FC = () => {
       <form>
         <Box component={Paper} variant="outlined" margin={1}>
           <Grid container display="flex" flexDirection="column" spacing={2} padding={2}>
+            {isLoading && (
+              <Grid item>
+                <LinearProgress variant="indeterminate" />
+              </Grid>
+            )}
             <Grid item>
               <Controller
                 control={control}
                 name="usuario"
                 defaultValue=""
+                rules={{ required: "Insira o nome do usuário." }}
                 render={({ field: { onChange, value } }) => (
                   <TextField
                     fullWidth
+                    disabled={isLoading}
                     label="Usuário"
                     value={value}
                     onChange={onChange}
+                    helperText={errors.usuario?.message}
+                    error={!!errors.usuario}
                   />
                 )}
               />
@@ -102,8 +117,17 @@ export const DetalhesDeVeiculos: React.FC = () => {
                 control={control}
                 name="placa"
                 defaultValue=""
+                rules={{ required: "Insira a placa do veículo." }}
                 render={({ field: { onChange, value } }) => (
-                  <TextField fullWidth label="Placa" value={value} onChange={onChange} />
+                  <TextField
+                    fullWidth
+                    disabled={isLoading}
+                    label="Placa"
+                    value={value}
+                    onChange={onChange}
+                    helperText={errors?.placa?.message}
+                    error={!!errors.placa}
+                  />
                 )}
               />
             </Grid>

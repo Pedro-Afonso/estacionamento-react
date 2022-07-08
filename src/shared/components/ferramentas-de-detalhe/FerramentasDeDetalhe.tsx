@@ -1,6 +1,6 @@
 import { Box, Button, Icon, Paper, useTheme } from "@mui/material";
 
-interface IFerramentasDaListagemProps {
+interface IFerramentasDeDetalheProps {
   mostrarBotaoNovo?: boolean;
   mostrarBotaoSalvar?: boolean;
   mostrarBotaoVoltar?: boolean;
@@ -12,7 +12,7 @@ interface IFerramentasDaListagemProps {
   aoClicarEmVoltar?: () => void;
 }
 
-export const FerramentasDaListagem: React.FC<IFerramentasDaListagemProps> = ({
+export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> = ({
   mostrarBotaoNovo = false,
   mostrarBotaoSalvar = false,
   mostrarBotaoVoltar = false,

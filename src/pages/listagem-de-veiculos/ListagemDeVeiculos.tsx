@@ -20,7 +20,7 @@ import {
   VeiculosService,
   IListagemVeiculo,
 } from "../../shared/services/api/veiculos/VeiculosService";
-import { FerramentasDaListagem } from "../../shared/components";
+import { FerramentasDeDetalhe } from "../../shared/components";
 import { LayoutBaseDaPagina } from "../../shared/layout";
 
 export const ListagemDeVeiculos = () => {
@@ -66,7 +66,14 @@ export const ListagemDeVeiculos = () => {
   return (
     <LayoutBaseDaPagina
       titulo="Listagem de Veiculos"
-      barraDeFerramentas={<FerramentasDaListagem />}
+      barraDeFerramentas={
+        <FerramentasDeDetalhe
+          mostrarBotaoVoltar
+          mostrarBotaoNovo
+          aoClicarEmVoltar={() => navigate("/pagina-inicial")}
+          aoClicarEmNovo={() => navigate("/veiculos/detalhe/novo")}
+        />
+      }
     >
       <TableContainer component={Paper} variant="outlined" sx={{ m: 1, width: "auto" }}>
         <Table>
