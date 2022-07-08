@@ -20,8 +20,9 @@ import {
   VeiculosService,
   IListagemVeiculo,
 } from "../../shared/services/api/veiculos/VeiculosService";
-import { FerramentasDeDetalhe } from "../../shared/components";
 import { LayoutBaseDaPagina } from "../../shared/layout";
+import { FerramentasDaListagem } from "../../shared/components/ferramentas-da-listagem/FerramentasDaListagem";
+import { useDebounce } from "../../shared/hooks";
 
 export const ListagemDeVeiculos = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -32,23 +33,33 @@ export const ListagemDeVeiculos = () => {
   const [totalCount, setTotalCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
+  const { debounce } = useDebounce();
+
+  const busca = useMemo(() => {
+    return searchParams.get("busca") || "";
+  }, [searchParams]);
+
   const pagina = useMemo(() => {
-    return Number(searchParams.get("pagina") || 1);
+    return Number(searchParams.get("pagina") || "1");
   }, [searchParams]);
 
   useEffect(() => {
-    setIsLoading(true);
-    VeiculosService.getAll(pagina).then((res) => {
-      setIsLoading(false);
+    if (!isLoading) {
+      setIsLoading(true);
+    }
+    debounce(() => {
+      VeiculosService.getAll(pagina, busca).then((res) => {
+        setIsLoading(false);
 
-      if (res instanceof Error) {
-        alert(res.message);
-      } else {
-        setTotalCount(res.totalCount);
-        setRows(res.data);
-      }
+        if (res instanceof Error) {
+          alert(res.message);
+        } else {
+          setTotalCount(res.totalCount);
+          setRows(res.data);
+        }
+      });
     });
-  }, [pagina]);
+  }, [pagina, busca]);
 
   const handleDelete = (id: number) => {
     if (window.confirm("Realmente deseja apagar?")) {
@@ -67,9 +78,14 @@ export const ListagemDeVeiculos = () => {
     <LayoutBaseDaPagina
       titulo="Listagem de Veiculos"
       barraDeFerramentas={
-        <FerramentasDeDetalhe
+        <FerramentasDaListagem
           mostrarBotaoVoltar
           mostrarBotaoNovo
+          mostrarInputBusca
+          textoDaBusca={busca}
+          aoMudarTextoDeBusca={(texto) =>
+            setSearchParams({ busca: texto, pagina: "1" }, { replace: true })
+          }
           aoClicarEmVoltar={() => navigate("/pagina-inicial")}
           aoClicarEmNovo={() => navigate("/veiculos/detalhe/novo")}
         />
@@ -117,7 +133,10 @@ export const ListagemDeVeiculos = () => {
                     page={pagina}
                     count={Math.ceil(totalCount / Environment.LIMITE_DE_LINHAS)}
                     onChange={(_, newPage) =>
-                      setSearchParams({ pagina: newPage.toString() })
+                      setSearchParams(
+                        { busca, pagina: newPage.toString() },
+                        { replace: true }
+                      )
                     }
                   />
                 </TableCell>

@@ -19,12 +19,6 @@
       "id": 21
     },
     {
-      "usuario": "João",
-      "placa": "ABC123123",
-      "entrada": "03/07/2022 11:33:53",
-      "id": 22
-    },
-    {
       "usuario": "Gerivaldo",
       "placa": "ABC123123",
       "entrada": "03/07/2022 11:34:48",
@@ -47,6 +41,12 @@
       "placa": "ABC123123",
       "entrada": "03/07/2022 11:35:39",
       "id": 26
+    },
+    {
+      "usuario": "Maria",
+      "placa": "ABC123123",
+      "entrada": "08/07/2022 15:00:01",
+      "id": 27
     }
   ]
 }

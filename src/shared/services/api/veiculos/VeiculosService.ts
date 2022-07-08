@@ -20,9 +20,9 @@ type TVeiculosComTotalCount = {
   totalCount: number;
 };
 
-const getAll = async (page = 1): Promise<TVeiculosComTotalCount | Error> => {
+const getAll = async (page = 1, filter = ""): Promise<TVeiculosComTotalCount | Error> => {
   try {
-    const urlRelativa = `/veiculos?_page=${page}&_limit=${Environment.LIMITE_DE_LINHAS}`;
+    const urlRelativa = `/veiculos?_page=${page}&_limit=${Environment.LIMITE_DE_LINHAS}&usuario_like=${filter}`;
 
     const { data, headers } = await Api.get(urlRelativa);
 
