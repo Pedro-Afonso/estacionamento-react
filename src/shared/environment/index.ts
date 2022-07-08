@@ -11,4 +11,6 @@ export const Environment = {
    * Texto exibido quando nenhum registro é encontrado em uma listagem
    */
   LISTAGEM_VAZIA: "Nenhum registro encontrado.",
+
+  TOTAL_DE_VAGAS: 50,
 };
